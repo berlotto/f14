@@ -1,0 +1,744 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="/static/theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/static/theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="/static/js/slides" src="/static/js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="/static/images/pythonrs-horizontal.png" class="mylogoh"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="/static/images/pythonrs.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Frameworks web</h2>
+    </hgroup>
+    <article class="build fade">
+      <p>Já conhecemos alguns webframeworks para Python:</p>
+      <ul>
+        <li>Django</li>
+        <li>Web2Py</li>
+        <li>CherryPy</li>
+        <li>Zope</li>
+        <li>Pyramid</li>
+      </ul>
+      <p>Agora, vamos conhecer outro....</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <!-- <h2>Slide with Image (Centered horz/vert)</h2> -->
+    </hgroup>
+    <article class="flexbox vcenter build">
+      <img src="/static/images/flask.png" alt="FLask micro framework" title="FLask micro framework">
+      <p class="strong"><br>Licença: BSD</p>
+    </article>
+      <footer class="source">source: flask.pocoo.org</footer>
+  </slide>
+
+
+  <slide>
+    <hgroup>
+      <h2>O que vamos ver</h2>
+    </hgroup>
+    <article class="smaller">
+      <ul>
+        <li>O que é o Flask</li>
+        <li>Dados do criador</li>
+        <li>Quais as libs que ele usa</li>
+        <li>Como instalar o Flask</li>
+        <li>Tipos de aplicações possíveis</li>
+        <li>Alguns codigos Flask (https://speakerdeck.com/mitsuhiko/advanced-flask-patterns-1)
+          <ul>
+            <li>Static/Templates</li>
+            <li>Cache</li>
+            <li>Modo debug</li>
+            <li>Criação de Response objects</li>
+            <li></li>
+          </ul>
+        </li>
+        <li>Jinja
+          <ul>
+            <li>O que é, como funciona</li>
+            <li>Filters</li>
+            <li>Loops</li>
+            <li>Comandos</li>
+            <li>Como criar coisas customizadas</li>
+          </ul>
+        </li>
+        <li>Casos de sucesso</li>
+        <li>Rodando em servidores WSGI: ngix, apache, gunicorn, google-apps, tornado, ...</li>
+        <li>Flask x Django</li>
+        <li>Contato</li>
+        
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Algumas fontes</h2>
+    </hgroup>
+    <article>
+      http://www.pixelmonkey.org/2012/06/14/web-app
+      http://www.slideshare.net/Solution4Future/python-restful-webservices-with-python-flask-and-django-solutions
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <img class="right" src="/static/images/flask-flask.png" alt="Flask">
+      <h2>O que é o Flask</h2>
+      <!-- <h3>Subtitle Placeholder</h3> -->
+    </hgroup>
+    <article>
+      <p>É um micro-framework, escrito em Python, para programar Python para a web.</p>
+      <ul class="build">
+        <li class=""><span class="strong gray4">O que quer dizer micro-framework ?</span>
+          <ul>
+            <li>Engine simples e extensível</li>
+            <li>Não toma decisões por você</li>
+            <li>Leve!</li>
+            <li>Dá para criar uma app web com somente <strong>1</strong> arquivo!</li>
+          </ul>
+        </li>
+        <li><span class="strong gray4">O que vem junto com o Flask ?</span>
+          <ul>
+            <li>servidor de desenvolvimento com debugger avançado</li>
+            <li>suporte a testes unitários</li>
+            <li>engine de request/response compatível com RESTFull</li>
+            <li>engine de templates simples - Jinja 2 </li>
+            <li>100% WSGI 1.0</li>
+            <li>unicode</li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <img class="right" src="/static/images/werkzeug.png" alt="WSGI Tools">
+      <h2>Werkzeug</h2>
+      <h3>The Python WSGI Utility Library</h3>
+    </hgroup>
+    <article>
+      <p>Um conjunto de ferramentas WSGI, é utilizada principalmente no Flask, porém pode ser utilizada 
+        em separado.</p>
+        <p>Contém uma série de utilidades para um sistema web</p>
+        <ul>
+          <li>Sistema de roteamento de URLs</li>
+          <li>Debugador facilitado, com Javascript e micro-terminal (fácil de usar o pdb)</li>
+          <li>Objetos de Response/Request fáceis de utilizar</li>
+          <li>Controle de Cache</li>
+          <li>Envio de arquivos</li>
+          <li>Sessão em modo seguro via Cookies ou normal</li>
+        </ul>
+    </article>
+  </slide>
+
+  <slide class="egue nobackground">
+    <article class="flexbox conteudomaior">
+      <img src="/static/images/error.png" alt="Flask debugger" title="Flask debugger">
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <img class="right" src="/static/images/jinja.png" alt="Template engine">
+      <h2>Jinja 2</h2>
+      <h3>A full featured template engine for Python</h3>
+    </hgroup>
+    <article>
+      <p>É uma das mais utilizadas engines de template para Python.</p>
+      <p>Foi inspirada no motor de templates do Django, porém foi aprimorada com muitas ferramentas.</p>
+      <p>Algumas das suas características são:</p>
+      <ul>
+        <li>Herança de templates</li>
+        <li>Compilação Just-in-time (compila em tempo de execução para bytecodes)</li>
+        <li>Integrada com o Flask/Werkzeug, então é fácil de debugar</li>
+      </ul>
+      <p>Quem usa: <strong>Instagr.am, Sourceforge, Mozilla,</strong> etc...</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <img class="right" src="/static/images/jinja.png" alt="Template engine">
+      <h2>Jinja 2</h2>
+    </hgroup>
+    <article class="smaller">
+      <ul>
+        <li>Unicode</li>
+        <li>Herança de templates</li>
+        <li>Métodos de teste para decisão
+          <ul>
+            <li>callable</li>
+            <li>defined</li>
+            <li>...</li>
+          </ul>
+        </li>
+        <li>Comentários</li>
+        <li>Estruturas de controle
+          <ul>
+            <li>If,For</li>
+            <li>Macros,Import,Call</li>
+            <li>Filtros</li>
+            <li>Atribuições</li>
+            <li>Block</li>
+            <li>Include</li>
+          </ul>
+        </li>
+        <li>Fácil de adicionar filtros customizados no contexto</li>
+      </ul>
+    </article>
+  </slide>
+
+
+  <slide class="egue nobackground">
+    <article class="flexbox vcenter">
+      <img src="/static/images/scheme.png" alt="Flask structure" title="Flask structure">
+    </article>
+  </slide>
+
+  <slide class="nobackground">
+    <hgroup>
+      <h2>O criador</h2>
+    </hgroup>
+    <article class="flexbox vcenter smaller">
+      <p>http://github.com/mitsuhiko/flask</p>
+      <img src="/static/images/github-flask.png" height="400px" alt="Github do criador do Flask" title="Github do criador do Flask">
+      <p><span class="gray4">Curiosidade:</span> o repositório do Flask tem mais de 140 contribuidores, +1000 commits, +6300 seguidores e +1200 forks</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Plugins do Flask</h2>
+    </hgroup>
+    <article>
+      <p>O Flask tem um número bastante grande de plugins disponíveis, com eles você pode
+        montar a sua aplicação do jeito que gostar e necessitar, mantendo todo o controle do 
+        seu funcionamento e arquitetura.</p>
+      <ul class="build fade">
+        <li>flask-admin (Cria uma interface de administração)</li>
+        <li>flask-sqlalchemy (Suporte à biblioteca SQLAlchemy)</li>
+        <li>flask-flatpages (Provê páginas estáticas via Markdown)</li>
+        <li>flask-oauth (Suporte p/ autenticação OAuth)</li>
+        <li>flask-login (Suporte completo para servir login em sua aplicação) </li>
+        <li>Flask-Restless (Geração de RestFULL Apis através do SQLAlchemy)</li>
+        <li>flask-themes (Suporte para temas na sua aplicação)</li>
+        <li>flask-uploads (Ferramentas de auxilio para trabalhar com envio de arquivos)</li>
+        <li>flask-wtf (Integração para WTForms)</li>
+        <li>Flask-PyMongo (Conexão ao MongoDB via PyMongo)</li>
+        <li>e muitos outros...</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide hidden>
+    Hidden slides are left out of the presentation.
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>hello.py</h2>
+      <h3>O código mínimo para ter uma aplicação Flask</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="python">
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return 'Hello Flask!'
+
+if __name__ == '__main__':
+    app.run()
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Templates</h2>
+    </hgroup>
+    <article class="smaller">
+      <pre class="prettyprint" data-lang="Jinja">
+{% raw %}
+{% extends 'layout.html' %}
+
+{% block title %}Greetings{% endblock %}
+
+{% block body %}
+&lt;h1&gt;Hello {{ name }}!&lt;/h1&gt;
+{% endblock %}
+{% endraw %}
+</pre>
+<pre class="prettyprint" data-lang="Jinja">
+{% raw %}
+&lt;!doctype html&gt;
+&lt;head&gt;
+&lt;title&gt;{% block title %}{% endblock %}&lt;/title&gt;
+&lt;script type="text/javascript" src="/static/js/hello.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+{% block body %}{% endblock %}
+&lt;/body&gt;
+{% endraw %}
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Estrutura</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>minha_app
+          <ul>
+            <li>static
+              <ul>
+                <li>js
+                  <ul>
+                    <li>hello.js</li>
+                  </ul>
+                </li>
+                <li>css
+                  <ul>
+                    <li>hello.css</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>templates
+              <ul>
+                <li>layout.html</li>
+                <li>index.html</li>
+              </ul>
+            </li>
+            <li>hello.py</li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+
+  <slide class="nobackground">
+    <article class="flexbox vcenter">
+      <h2>Outros códigos...</h2>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Testes Unitários</h2>
+    </hgroup>
+    <article class="smaller">
+      <pre class="prettyprint" data-lang="PYTHON">
+class FlaskrTestCase(unittest.TestCase):
+
+    def setUp(self):
+        """Before each test, set up a blank database"""
+        self.db_fd, flaskr.app.config['DATABASE'] = tempfile.mkstemp()
+        flaskr.app.config['TESTING'] = True
+        self.app = <b>flaskr.app.test_client()</b>
+        flaskr.init_db()
+
+    ...
+
+    def login(self, username, password):
+        return <b>self.app.post</b>('/login', data=dict(
+            username=username,
+            password=password
+        ), follow_redirects=True)
+
+    # testing functions
+
+    def test_empty_db(self):
+        """Start with a blank database."""
+        rv = <b>self.app.get('/')</b>
+        assert b'No entries here so far' in rv.data
+
+      </pre>
+      <footer class="source">
+        https://github.com/mitsuhiko/flask/blob/master/examples/flaskr/flaskr_tests.py
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Banco NoSQL</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="PYTHON">
+from flask import Flask
+from flask.ext.pymongo import PyMongo
+
+app = Flask(__name__)
+mongo = PyMongo(app)
+
+@app.route('/')
+def home_page():
+    online_users = mongo.db.users.find({'online': True})
+    return render_template('index.html',
+        online_users=online_users)
+
+@app.route('/uploads/<path:filename>', methods=['POST'])
+def save_upload(filename):
+    mongo.save_file(filename, request.files['file'])
+    return redirect(url_for('get_upload', filename=filename))
+      </pre>
+      <footer class="source">
+        http://flask-pymongo.readthedocs.org/en/latest/
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>RestFull Api (1)</h2>
+    </hgroup>
+    <article class="smaller">
+      <pre class="prettyprint" data-lang="PYTHON">
+from flask.views import MethodView
+from flask import jsonify
+ 
+class WindowView(MethodView):
+ 
+    def get(self, id):
+        if id is None: # Return a list of windows
+            pass
+        else: # Return a specific window information
+            pass
+        return jsonify({"msg": "Echo GET from Class!" + str(id)})
+ 
+    def post(self):
+        return jsonify({"msg": "Echo POST from Class!"})
+ 
+    def put(self, id):
+        return jsonify({"msg": "Echo PUT from Class!"})
+ 
+    def delete(self, id):
+        return "Window deleted!"
+ 
+    def patch(self, id):
+        return jsonify({"msg": "Window Patched Ok!"})
+      </pre>
+      <footer class="source">
+        http://www.pythonrs.org/implementando-uma-aplicacao-restful-com-flask/
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>RestFull Api (2)</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="PYTHON">
+from flask.ext.restless import APIManager
+
+manager = APIManager(app, flask_sqlalchemy_db=db)
+
+person_blueprint = manager.create_api(Person,
+                                      methods=['GET', 'POST', 'DELETE'])
+computer_blueprint = manager.create_api(Computer)
+      </pre>
+      <footer class="source">
+        http://flask-restless.readthedocs.org/en/latest/basicusage.html
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Executando via Tornado</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="PYTHON">
+from tornado.wsgi import WSGIContainer
+from tornado.httpserver import HTTPServer
+from tornado.ioloop import IOLoop
+from yourapplication import app
+
+http_server = HTTPServer(WSGIContainer(app))
+http_server.listen(5000)
+IOLoop.instance().start()
+      </pre>
+      <footer class="source">
+        http://flask.pocoo.org/docs/deploying/wsgi-standalone/
+      </footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Custom Filter para Jinja 2</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="PYTHON">
+def formatCurrency(s):
+    try:
+        float_s = float(s)
+        return locale.currency( float_s , grouping=True )
+    except:
+        return "0.00"
+
+app.jinja_env.filters['formatCurrency'] = formatCurrency
+
+</pre><pre class="prettyprint" data-lang="JINJA">
+
+{%raw%}{{suavariavel|formatCurrency}}{%endraw%}
+      </pre>
+      <footer class="source">
+        https://github.com/gabinetedigital/gd/blob/master/gd/content/__init__.py
+      </footer>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(/static/images/complex.jpg)">
+    <hgroup>
+      <h2 class="backdark">Posso fazer grandes aplicações também ?</h2>
+    </hgroup>
+    <footer class="source">http://howardlewisship.com/images/t5-service-dependencies.jpg</footer>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Blueprints</h2>
+    </hgroup>
+    <article>
+      <p>O Flask usa o conceito de blueprint para criar seus componentes "plugáveis", obedecendo os 
+      padrões de uma aplicação através da aplicação.</p>
+
+      <strong class="strong">blueprints:</strong>
+
+      <ul class="build fade">
+        <li>tem estrutura parecida com a de uma app Flask</li>
+        <li>simplificam e organizam a ampliação de uma aplicação</li>
+        <li>são registrados para urls específicas</li>
+        <li>podem ser registrador para várias urls diferentes na mesma app</li>
+        <li>é basicamente um módulo python dentro da nossa app</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Estrutura</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>minha_app
+          <ul>
+            <li>static</li>
+            <li>templates</li>
+            <li>auth
+              <ul>
+                <li>static</li>
+                <li>templates</li>
+                <li>__init__.py</li>
+              </ul>
+            </li>
+            <li>hello.py</li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h3>E outras coisas mais...</h3>
+    </hgroup>
+    <article>
+      <dl>
+        <dt>Json Suport</dt>
+        <dd>Método "jsonify" retorna já um json dos objetos em um objeto Response, com mimetype "application/json"</dd>
+        <dt>Sinais</dt>
+        <dd>São "eventos" que podemos conectar para receber ou tratar dados e ações</dd>
+        <dt>Views Plugáveis</dt>
+        <dd>Estas views são baseadas em classes e não em métodos conforme vemos no padrão, assim podemos utilizar OO nas views tb</dd>
+        <dt>Message Flashing</dt>
+        <dd>É um meio de empilhar mensagens que podem ser desempilhadas e mostradas no seus templates, não necessitando de maior controle</dd>
+        <dt>Logs</dt>
+        <dd>Sistema de log padrão Python, compatível com arquivo, emails, stdout, etc...</dd>
+      </dl>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Em produção</h2>
+    </hgroup>
+    <article>
+      <p>Pode ser executado com qualquer servidor compatível com WSGI, ou que tenha uma biblioteca
+        que faça esta conexão, como por exemplo</p>
+        <ul>
+          <li>Nginx, com uWsgi</li>
+          <li>Apache, com mod-wsgi</li>
+          <li>lighttpd, com FastCGI</li>
+          <li>Tornado</li>
+          <li>Gunicorn</li>
+          <li>Twisted</li>
+        </ul>
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="/static/images/pythonrs.png" width="128"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Quem usa o flask?</h2>
+      <h3>Alguns exemplos de sites que utilizan o Flask</h3>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Comiker (comiker.com)</h2>
+      <h3>Site para criar tirinhas</h3>
+    </hgroup>
+    <article class="flexbox center">
+      <img src="/static/images/comiker.png" alt="Flask site..." title="Flask site...">
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>blohg (blohg.org)</h2>
+      <h3>Mercurial blog engine</h3>
+    </hgroup>
+    <article class="flexbox center">
+      <img src="/static/images/comiker.png" alt="Flask site..." title="Flask site...">
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Gabinete Digital (gabinetedigital.rs.gov.br)</h2>
+      <h3>Gabinete digital do governo do estado do RS</h3>
+    </hgroup>
+    <article class="flexbox center">
+      <img src="/static/images/gd.png" alt="Flask site..." title="Flask site...">
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Battlefield 3 News Aggregator (bf3.immersedcode.org)</h2>
+      <h3>Agregador de notícias sobre Battlefield</h3>
+    </hgroup>
+    <article class="flexbox center">
+      <img src="/static/images/comiker.png" alt="Flask site..." title="Flask site...">
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>MoinMoin (moinmo.in)</h2>
+      <h3>Um motor de Wiki</h3>
+    </hgroup>
+    <article class="flexbox center">
+      <img src="/static/images/MoinMoinWiki.png" alt="MoinMoin" title="MoinMoin">
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Grupo de Usuários do RS</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="/static/images/logo_pytche6.png" alt="Participe do PyTche" title="Participe do PyTche">
+      <p>Entre em <a href="http://pytche.org">http://pytche.org</a> e participe do grupo!</p>
+      <p>Lista: <a href="http://groups.google.com/group/pytche">http://groups.google.com/group/pytche</a></p>
+    </article>
+  </slide>
+
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="/static/images/pythonrs.png" width="128"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <q>
+        Keep it simple !
+      </q>
+    </article>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="/static/images/pythonrs.png" width="128"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Muito Obrigado !</h2>
+      <p>Como me achar:</p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+<!--   <slide class="logoslide dark nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="/static/images/pythonrs.png"></span>
+    </article>
+  </slide> -->
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
