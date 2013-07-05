@@ -1067,3 +1067,50 @@ aside.gdbar {
 dt { float: left; clear: left; width: auto; text-align: right; font-weight: bold; color: $brand-blue-secondary2; } 
 dt:after { content: ":"; } 
 dd { margin: 0 0 40px 250px; padding: 0 0 0.5em 0; }
+
+.logosfw{
+  position: absolute;
+  top: 100px;
+  right: 100px;
+  background-color: #f1f1f1;
+  padding: 13px;
+  width: 210px;
+  @include border-radius(15);
+  text-align: center;
+}
+
+.logosfw img{
+  max-width: 200px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.gigant{
+  font-size: 60pt;
+  margin-top: 3em;
+}
+
+.colunas{
+  width: 50%;
+  float:left;
+}
+
+.file{
+  font-style: italic;
+}
+
+ul.tree {
+  list-style-type:none;
+}
+
+ul li.folder{
+  list-style-image:url('/static/images/folder.png');
+}
+
+ul li.file{
+  list-style-image:url('/static/images/file.png');
+}
+
+.nobullets{
+  list-style-type: none !important;
+}

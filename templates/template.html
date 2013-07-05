@@ -9,7 +9,7 @@ URL: https://code.google.com/p/io-2012-slides
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>Flask - FISL14</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
@@ -46,16 +46,29 @@ URL: https://code.google.com/p/io-2012-slides
     <hgroup>
       <h2>Frameworks web</h2>
     </hgroup>
-    <article class="build fade">
+    <article class="build">
       <p>Já conhecemos alguns webframeworks para Python:</p>
+      <div>
       <ul>
         <li>Django</li>
         <li>Web2Py</li>
         <li>CherryPy</li>
         <li>Zope</li>
         <li>Pyramid</li>
+        <li>Tornado</li>
+        <li>Bottle</li>
       </ul>
-      <p>Agora, vamos conhecer outro....</p>
+      <div class="logosfw">
+        <img src="/static/images/fw/django.png" alt="Django">
+        <img src="/static/images/fw/cherrypy.jpg" alt="Cherrypy">
+        <img src="/static/images/fw/web2py.png" alt="Web2py">
+        <img src="/static/images/fw/tornado.png" alt="Tornado">
+        <img src="/static/images/fw/pyramid.png" alt="Pyramid">
+        <img src="/static/images/fw/zope-logo.gif" alt="Zope">
+        <img src="/static/images/fw/bottle.png" alt="Bottle">
+      </div>
+    </div>
+      <h3 class="strong">Agora, vamos conhecer outro....</h3>
     </article>
   </slide>
 
@@ -63,8 +76,8 @@ URL: https://code.google.com/p/io-2012-slides
     <hgroup>
       <!-- <h2>Slide with Image (Centered horz/vert)</h2> -->
     </hgroup>
-    <article class="flexbox vcenter build">
-      <img src="/static/images/flask.png" alt="FLask micro framework" title="FLask micro framework">
+    <article class="flexbox vcenter">
+      <img src="/static/images/flask.png" alt="Flask micro framework" title="FLask micro framework">
       <p class="strong"><br>Licença: BSD</p>
     </article>
       <footer class="source">source: flask.pocoo.org</footer>
@@ -78,38 +91,29 @@ URL: https://code.google.com/p/io-2012-slides
     <article class="smaller">
       <ul>
         <li>O que é o Flask</li>
-        <li>Dados do criador</li>
-        <li>Quais as libs que ele usa</li>
+        <li>O que vem no pacote
+          <ul>
+            <li>Jinja</li>
+            <li>Werkzeug</li>
+          </ul>
+        </li>
         <li>Como instalar o Flask</li>
-        <li>Tipos de aplicações possíveis</li>
-        <li>Alguns codigos Flask (https://speakerdeck.com/mitsuhiko/advanced-flask-patterns-1)
-          <ul>
-            <li>Static/Templates</li>
-            <li>Cache</li>
-            <li>Modo debug</li>
-            <li>Criação de Response objects</li>
-            <li></li>
-          </ul>
-        </li>
-        <li>Jinja
-          <ul>
-            <li>O que é, como funciona</li>
-            <li>Filters</li>
-            <li>Loops</li>
-            <li>Comandos</li>
-            <li>Como criar coisas customizadas</li>
-          </ul>
-        </li>
+        <li>O criador</li>
+        <li>Plugins</li>
+        <li>Códigos</li>
+        <li>Grandes aplicações</li>
+        <li>Mais de Flask</li>
+        <!-- <li>Alguns codigos Flask (https://speakerdeck.com/mitsuhiko/advanced-flask-patterns-1)</li> -->
+        <!-- <li>Rodando em servidores WSGI: ngix, apache, gunicorn, google-apps, tornado, ...</li> -->
         <li>Casos de sucesso</li>
-        <li>Rodando em servidores WSGI: ngix, apache, gunicorn, google-apps, tornado, ...</li>
-        <li>Flask x Django</li>
+        <!-- <li>Flask x Django</li> -->
         <li>Contato</li>
         
       </ul>
     </article>
   </slide>
 
-  <slide>
+<!--   <slide>
     <hgroup>
       <h2>Algumas fontes</h2>
     </hgroup>
@@ -117,7 +121,7 @@ URL: https://code.google.com/p/io-2012-slides
       http://www.pixelmonkey.org/2012/06/14/web-app
       http://www.slideshare.net/Solution4Future/python-restful-webservices-with-python-flask-and-django-solutions
     </article>
-  </slide>
+  </slide> -->
 
   <slide>
     <hgroup>
@@ -126,7 +130,7 @@ URL: https://code.google.com/p/io-2012-slides
       <!-- <h3>Subtitle Placeholder</h3> -->
     </hgroup>
     <article>
-      <p>É um micro-framework, escrito em Python, para programar Python para a web.</p>
+      <p>É um micro-framework, escrito em Python, para programar voltado a web.</p>
       <ul class="build">
         <li class=""><span class="strong gray4">O que quer dizer micro-framework ?</span>
           <ul>
@@ -158,8 +162,8 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article>
       <p>Um conjunto de ferramentas WSGI, é utilizada principalmente no Flask, porém pode ser utilizada 
-        em separado.</p>
-        <p>Contém uma série de utilidades para um sistema web</p>
+        como uma lib em outras aplicações também.</p>
+        <p>Contém uma série de utilidades para um sistema web:</p>
         <ul>
           <li>Sistema de roteamento de URLs</li>
           <li>Debugador facilitado, com Javascript e micro-terminal (fácil de usar o pdb)</li>
@@ -184,13 +188,14 @@ URL: https://code.google.com/p/io-2012-slides
       <h3>A full featured template engine for Python</h3>
     </hgroup>
     <article>
-      <p>É uma das mais utilizadas engines de template para Python.</p>
+      <!-- <p>É uma das mais utilizadas engines de template para Python.</p> -->
       <p>Foi inspirada no motor de templates do Django, porém foi aprimorada com muitas ferramentas.</p>
       <p>Algumas das suas características são:</p>
       <ul>
         <li>Herança de templates</li>
         <li>Compilação Just-in-time (compila em tempo de execução para bytecodes)</li>
         <li>Integrada com o Flask/Werkzeug, então é fácil de debugar</li>
+        <li>Grande performance</li>
       </ul>
       <p>Quem usa: <strong>Instagr.am, Sourceforge, Mozilla,</strong> etc...</p>
     </article>
@@ -228,10 +233,27 @@ URL: https://code.google.com/p/io-2012-slides
     </article>
   </slide>
 
-
   <slide class="egue nobackground">
     <article class="flexbox vcenter">
       <img src="/static/images/scheme.png" alt="Flask structure" title="Flask structure">
+    </article>
+  </slide>
+
+  <slide class="">
+    <hgroup>
+      <h2>Instalação</h2>
+    </hgroup>
+    <article>
+      <p>pelo distribute:</p>
+      <pre class="prettyprint" data-lang="shell">
+        $ pip install flask
+      </pre>  
+      <p>ou manualmente:</p>
+      <pre class="prettyprint" data-lang="shell">
+        $ git clone https://github.com/mitsuhiko/flask.git
+        $ cd flask
+        $ python setup.py install
+      </pre>  
     </article>
   </slide>
 
@@ -300,17 +322,6 @@ if __name__ == '__main__':
       <h2>Templates</h2>
     </hgroup>
     <article class="smaller">
-      <pre class="prettyprint" data-lang="Jinja">
-{% raw %}
-{% extends 'layout.html' %}
-
-{% block title %}Greetings{% endblock %}
-
-{% block body %}
-&lt;h1&gt;Hello {{ name }}!&lt;/h1&gt;
-{% endblock %}
-{% endraw %}
-</pre>
 <pre class="prettyprint" data-lang="Jinja">
 {% raw %}
 &lt;!doctype html&gt;
@@ -323,6 +334,17 @@ if __name__ == '__main__':
 &lt;/body&gt;
 {% endraw %}
 </pre>
+      <pre class="prettyprint" data-lang="Jinja">
+{% raw %}
+{% extends 'layout.html' %}
+
+{% block title %}Greetings{% endblock %}
+
+{% block body %}
+&lt;h1&gt;Hello {{ name }}!&lt;/h1&gt;
+{% endblock %}
+{% endraw %}
+</pre>
     </article>
   </slide>
 
@@ -331,30 +353,30 @@ if __name__ == '__main__':
       <h2>Estrutura</h2>
     </hgroup>
     <article>
-      <ul>
-        <li>minha_app
+      <ul class="nobullets">
+        <li class="folder"> minha_app
           <ul>
-            <li>static
+            <li class="folder">static
               <ul>
-                <li>js
+                <li class="folder">js
                   <ul>
-                    <li>hello.js</li>
+                    <li class="file">hello.js</li>
                   </ul>
                 </li>
-                <li>css
+                <li class="folder">css
                   <ul>
-                    <li>hello.css</li>
+                    <li class="file">hello.css</li>
                   </ul>
                 </li>
               </ul>
             </li>
-            <li>templates
+            <li class="folder">templates
               <ul>
-                <li>layout.html</li>
-                <li>index.html</li>
+                <li class="file">layout.html</li>
+                <li class="file">index.html</li>
               </ul>
             </li>
-            <li>hello.py</li>
+            <li class="file">hello.py</li>
           </ul>
         </li>
       </ul>
@@ -540,6 +562,9 @@ app.jinja_env.filters['formatCurrency'] = formatCurrency
     <hgroup>
       <h2 class="backdark">Posso fazer grandes aplicações também ?</h2>
     </hgroup>
+    <article class="build">
+      <h1 class="backdark centered gigant">SIM!</h1>
+    </article>
     <footer class="source">http://howardlewisship.com/images/t5-service-dependencies.jpg</footer>
   </slide>
 
@@ -551,14 +576,20 @@ app.jinja_env.filters['formatCurrency'] = formatCurrency
       <p>O Flask usa o conceito de blueprint para criar seus componentes "plugáveis", obedecendo os 
       padrões de uma aplicação através da aplicação.</p>
 
-      <strong class="strong">blueprints:</strong>
+      <p class="strong">blueprints:</p>
 
-      <ul class="build fade">
+      <ul class="">
         <li>tem estrutura parecida com a de uma app Flask</li>
         <li>simplificam e organizam a ampliação de uma aplicação</li>
         <li>são registrados para urls específicas</li>
         <li>podem ser registrador para várias urls diferentes na mesma app</li>
         <li>é basicamente um módulo python dentro da nossa app</li>
+      </ul>
+
+      <p>Além disto:</p>
+      <ul>
+        <li>modularize sua aplicação</li>
+        <li>separe as partes (views, models, etc..) e importe-as</li>
       </ul>
     </article>
   </slide>
@@ -567,29 +598,57 @@ app.jinja_env.filters['formatCurrency'] = formatCurrency
     <hgroup>
       <h2>Estrutura</h2>
     </hgroup>
-    <article>
-      <ul>
-        <li>minha_app
-          <ul>
-            <li>static</li>
-            <li>templates</li>
-            <li>auth
-              <ul>
-                <li>static</li>
-                <li>templates</li>
-                <li>__init__.py</li>
-              </ul>
-            </li>
-            <li>hello.py</li>
-          </ul>
-        </li>
-      </ul>
+    <article class="smaller">
+      <div class="colunas">
+        <ul>
+          <li class="folder"><span class="gray4">minha_app</span>
+            <ul>
+              <li class="gray4 folder">static</li>
+              <li class="gray4 folder">templates</li>
+              <li class="folder"><span class="gray4">auth</span>
+                <ul>
+                  <li class="gray4 folder">static</li>
+                  <li class="gray4 folder">templates</li>
+                  <li class="file">__init__.py</li>
+                </ul>
+              </li>
+              <li class="file">hello.py</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="colunas">
+        <ul>
+          <li class="folder"><span class="gray4">minha_app</span>
+            <ul class="tree">
+              <li class="folder"><span class="gray4">minha_app</span>
+                <ul>
+                  <li class="gray4 folder">static</li>
+                  <li class="gray4 folder">templates</li>
+                  <li class="file">__init__.py</li>
+                  <li class="file">views.py</li>
+                  <li class="file">models.py</li>
+                  <li class="file">utils.py</li>
+                </ul>
+              </li>
+              <li class="folder"><span class="gray4">auth</span>
+                <ul>
+                  <li class="gray4 folder">static</li>
+                  <li class="gray4 folder">templates</li>
+                  <li class="file">__init__.py</li>
+                </ul>
+              </li>
+              <li class="file">run.py</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h3>E outras coisas mais...</h3>
+      <h2>Mais de Flask</h2>
     </hgroup>
     <article>
       <dl>
@@ -633,53 +692,62 @@ app.jinja_env.filters['formatCurrency'] = formatCurrency
     </hgroup>
   </slide>
 
-  <slide>
+  <slide class="nobackground">
     <hgroup>
       <h2>Comiker (comiker.com)</h2>
       <h3>Site para criar tirinhas</h3>
     </hgroup>
-    <article class="flexbox center">
+    <article class="centered">
       <img src="/static/images/comiker.png" alt="Flask site..." title="Flask site...">
     </article>
   </slide>
 
-  <slide>
+  <slide class="nobackground">
     <hgroup>
       <h2>blohg (blohg.org)</h2>
       <h3>Mercurial blog engine</h3>
     </hgroup>
-    <article class="flexbox center">
-      <img src="/static/images/comiker.png" alt="Flask site..." title="Flask site...">
+    <article class="centered">
+      <img src="/static/images/blohg.png" alt="Flask site..." title="Flask site...">
     </article>
   </slide>
 
-  <slide>
+  <slide class="nobackground">
     <hgroup>
       <h2>Gabinete Digital (gabinetedigital.rs.gov.br)</h2>
       <h3>Gabinete digital do governo do estado do RS</h3>
     </hgroup>
-    <article class="flexbox center">
+    <article class="centered">
       <img src="/static/images/gd.png" alt="Flask site..." title="Flask site...">
     </article>
   </slide>
 
-  <slide>
+  <slide class="nobackground">
     <hgroup>
       <h2>Battlefield 3 News Aggregator (bf3.immersedcode.org)</h2>
       <h3>Agregador de notícias sobre Battlefield</h3>
     </hgroup>
-    <article class="flexbox center">
-      <img src="/static/images/comiker.png" alt="Flask site..." title="Flask site...">
+    <article class="centered">
+      <img src="/static/images/bf3.png" alt="Flask site..." title="Flask site...">
     </article>
   </slide>
 
-  <slide>
+  <slide class="nobackground">
     <hgroup>
       <h2>MoinMoin (moinmo.in)</h2>
       <h3>Um motor de Wiki</h3>
     </hgroup>
-    <article class="flexbox center">
+    <article class="centered">
       <img src="/static/images/MoinMoinWiki.png" alt="MoinMoin" title="MoinMoin">
+    </article>
+  </slide>
+
+ <slide class="nobackground">
+    <hgroup>
+      <h2>O uso do Flask no GD</h2>
+    </hgroup>
+    <article class="centered">
+      <img src="/static/images/gdschema.png" alt="Schema" title="Schema">
     </article>
   </slide>
 
