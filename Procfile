@@ -1,1 +1,1 @@
-web: python serve_flask.py
+web: python app.py
